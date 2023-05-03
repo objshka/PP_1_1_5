@@ -3,7 +3,6 @@ package jm.task.core.jdbc.dao;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +13,12 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void createUsersTable() {
-
         String sql = "CREATE TABLE IF NOT EXISTS users " +
                 "(id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT," +
                 "name VARCHAR(255) NOT NULL, " +
                 "lastName VARCHAR(255) NOT NULL, " +
                 "age TINYINT NOT NULL)";
+
         try (Connection connection = Util.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             connection.setAutoCommit(false);
@@ -44,10 +43,9 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-
-
         String sql = "INSERT INTO users (name, lastName, age)" +
                 "VALUES(?, ?, ?)";
+
         try (Connection connection = Util.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             connection.setAutoCommit(false);
@@ -63,7 +61,6 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void removeUserById(long id) {
-
         String sql = "DELETE FROM users WHERE id";
 
         try (Connection connection = Util.getConnection();
