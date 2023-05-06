@@ -7,7 +7,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 import jm.task.core.jdbc.model.User;
-import org.hibernate.Session;
 
 
 import java.sql.Connection;
@@ -22,7 +21,7 @@ public class Util {
     private static final String PASSWORD = "gtqju7VrdU";
     private static final String DIALECT = "org.hibernate.dialect.MySQL5Dialect";
     private static SessionFactory sessionFactory;
-    public static Session getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
@@ -43,7 +42,7 @@ public class Util {
                 e.printStackTrace();
             }
         }
-        return sessionFactory.getCurrentSession();
+        return sessionFactory;
     }
 
 
